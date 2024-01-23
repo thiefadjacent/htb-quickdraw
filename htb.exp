@@ -1,0 +1,31 @@
+#!/usr/bin/expect -f
+
+# HTB Quickdraw
+# Designed to quickly set yourself up for some box hackin
+# ./htb.exp [pwn ip] [pwn pass] [# ssh tabs] [targ ip] [targ hname]
+set user "htb-YOUR_USER_HERE"
+set host [lindex $argv 0]
+set password [lindex $argv 1]
+set tabs [lindex $argv 2]
+set targ_ip [lindex $argv 3]
+set targ_hostname [lindex $argv 4]
+
+spawn ssh-copy-id $user@$host
+
+log_user 0
+expect {
+    "continue" { send "yes\n"; exp_continue }
+    "password:" { send "$password\n"; }
+}
+
+expect { 
+    "Now try logging into the machine" {
+        for {set x 0} {$x<$tabs-1} {incr x} {
+            spawn open "ssh://$user@$host";
+        }
+    }
+}
+log_user 1
+spawn ssh -q -D 1080 $user@$host
+send "echo '$targ_ip $targ_hostname' | sudo tee -a /etc/hosts\n"; 
+interact
