@@ -4,7 +4,7 @@ Small script for quickly setting up a PwnBox for HackTheBox
 # Usage:
 ```bash
 git clone https://github.com/thiefadjacent/htb-quickdraw.git ~/htb-quickdraw/
-bash ~/htb-quickdraw/htb.exp [pwn ip] [pwn pass] [# ssh tabs] [targ ip] [targ hostname]
+bash ~/htb-quickdraw/htb.exp [pwn ip] [pwn pass] [num ssh tabs] [targ ip] [targ hostname]
 ```
 
 # Description
