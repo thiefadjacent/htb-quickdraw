@@ -3,7 +3,7 @@
 # HTB Quickdraw
 # Designed to quickly set yourself up for some box hackin
 # ./htb.exp [pwn ip] [pwn pass] [# ssh tabs] [targ ip] [targ hname]
-set user "htb-YOUR_USER_HERE"
+set user "htb-uname"
 set host [lindex $argv 0]
 set password [lindex $argv 1]
 set tabs [lindex $argv 2]
